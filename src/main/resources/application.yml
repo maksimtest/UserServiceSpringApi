@@ -1,0 +1,12 @@
+spring:
+  application:
+      name: UserServiceSpringApi
+sources:
+  db1:
+    url: "jdbc:postgresql://localhost:5432/comparus2"
+    username: "postgres"
+    password: "root"
+  db2:
+    url: "jdbc:postgresql://localhost:5432/comparus3"
+    username: "postgres"
+    password: "root"
