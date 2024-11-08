@@ -1,0 +1,79 @@
+openapi: 3.0.3
+info:
+  title: Test task for Java candidate
+  version: 0.0.1
+  description: |-
+    This is a simple service server based on the OpenAPI 3.0 specification.
+    Service allow get users entities from difference of databases.
+    Configuration of servise provide possibility to adding not limited count of datasources.
+
+    _If you're looking for the Swagger 2.0/OAS 2.0 version of Petstore, then click [here](https://editor.swagger.io/?url=https://petstore.swagger.io/v2/swagger.yaml). Alternatively, you can load via the `Edit > Load Petstore OAS 2.0` menu option!_
+    
+    Some useful links:
+    - [Code of projects on Git repository](https://github.com/...)
+    - [The source API definition for the Pet Store](https://github.com/swagger-api/swagger-petstore/blob/master/src/main/resources/openapi.yaml)
+servers:
+  - url: http://localhost:8080
+    description: Test service TODO need make https
+paths:
+  /users:
+    get:
+      tags:
+        - USERS
+      summary: Finds Users from difference databases
+      description: Finds Users from difference databases with several parameters
+      operationId: findAllUsers
+      parameters:
+        - name: filter
+          in: query
+          description: filter has format [field name]-[filter value] 
+          required: false
+          schema:
+            type: string
+            example: username-user
+        - name: order
+          in: query 
+          description: sorting by order [+ or -]-[field name]
+          required: false
+          schema:
+            type: string
+            example: '+name'
+        - name: backet
+          in: query
+          description: propagation has 2 numbers [number of backet since 0]-[count of backets]. Example  0-10
+          required: false
+          schema:
+            type: string        
+            example: 0-10
+      responses:
+        '200':
+          description: successful operation with users list
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Users'          
+        '400':
+          description: Invalid status value
+components:
+  schemas:
+    User:
+      type: object
+      properties:
+        id:
+          type: string
+          example: example-user-id-1
+        username:
+          type: string
+          example: user-1
+        name:
+          type: string
+          example: User
+        surname:
+          type: string
+          example: Userenko
+    Users:
+      type: array
+      items:
+        $ref: '#/components/schemas/User'
