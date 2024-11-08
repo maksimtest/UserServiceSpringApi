@@ -1,12 +1,12 @@
 package comparus.service;
 
-//import comparus.service.config.ReadConfig;
+import comparus.service.config.DataSourcesHolder;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 
 @SpringBootApplication
-//@EnableConfigurationProperties(ReadConfig.class)
+@EnableConfigurationProperties(DataSourcesHolder.class)
 public class UserServiceSpringApiApplication {
 
     public static void main(String[] args) {
