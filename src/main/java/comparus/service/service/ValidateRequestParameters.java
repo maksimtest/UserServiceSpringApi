@@ -60,7 +60,7 @@ public class ValidateRequestParameters {
         }
     }
 
-    protected List<String> getFieldsName() {
+    private List<String> getFieldsName() {
         return Arrays.stream(User.class.getDeclaredFields())
                 .map(Field::getName)
                 .toList();
