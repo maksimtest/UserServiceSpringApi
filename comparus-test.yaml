@@ -26,21 +26,34 @@ paths:
       parameters:
         - name: filter
           in: query
-          description: filter has format [field name]-[filter value] 
+          description: filter has format [field name]-[filter value].
           required: false
           schema:
             type: string
-            example: username-user
+            example: username-u
         - name: order
           in: query 
-          description: sorting by order [+ or -]-[field name]
+          description: set field for sorting. Default order by ASC. Use '-' letters before field name for DESC ordering.
           required: false
           schema:
             type: string
-            example: '+name'
-        - name: backet
+            default: id
+            enum:
+              - id
+              - username
+              - name
+              - surname
+              - -id
+              - -username
+              - -name
+              - -surname
+        - name: propagation
           in: query
-          description: propagation has 2 numbers [number of backet since 0]-[count of backets]. Example  0-10
+          description: |-
+            propagation has 2 numbers [number of backets since 0]-[count items in responce]. 
+            For example: if controller find 26 users.
+            Then it gets 10 users by "0-10" and "1-10" propagation value.
+            And it gets 6 users by "6-10" propagation value
           required: false
           schema:
             type: string        
@@ -55,7 +68,7 @@ paths:
                 items:
                   $ref: '#/components/schemas/Users'          
         '400':
-          description: Invalid status value
+          description: Invalid parameters value
 components:
   schemas:
     User:
