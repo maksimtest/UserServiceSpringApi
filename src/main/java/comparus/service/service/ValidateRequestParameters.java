@@ -29,21 +29,22 @@ public class ValidateRequestParameters {
             int separatorIndex = propagation.indexOf('-');
             if (separatorIndex > 0 && separatorIndex < propagation.length() - 1) {
                 String num1 = propagation.substring(0, separatorIndex);
-                String num2 = propagation.substring(separatorIndex+1);
-                if(isIntegerMoreZero(num1) && isIntegerMoreZero(num2)) {
+                String num2 = propagation.substring(separatorIndex + 1);
+                if (isIntegerMoreZero(num1) && isIntegerMoreZero(num2)) {
                     return;
                 }
             }
             throw new PropagationInvalidParametersException(propagation);
         }
     }
-    public boolean isIntegerMoreZero(String value){
-        try{
-            if(Integer.parseInt(value) >= 0){
+
+    private boolean isIntegerMoreZero(String value) {
+        try {
+            if (Integer.parseInt(value) >= 0) {
                 return true;
             }
-        } catch (Exception e){
-
+        } catch (Exception e) {
+            // todo nothing
         }
         return false;
     }
@@ -59,7 +60,7 @@ public class ValidateRequestParameters {
         }
     }
 
-    public List<String> getFieldsName() {
+    protected List<String> getFieldsName() {
         return Arrays.stream(User.class.getDeclaredFields())
                 .map(Field::getName)
                 .toList();
