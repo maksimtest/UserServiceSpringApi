@@ -1,8 +1,9 @@
 spring:
   application:
-      name: UserServiceSpringApi
+    name: UserServiceSpringApi
+
 dataSources:
-  - name: "data-base-1"
+  db1:
     strategy: postgres
     url: "jdbc:postgresql://localhost:5432/comparus1"
     table: "users"
@@ -13,7 +14,7 @@ dataSources:
       username: login
       name: first_name
       surname: last_name
-  - name: "data-base-2"
+  db2:
     strategy: postgres
     url: "jdbc:postgresql://localhost:5432/comparus1"
     table: "user_table"
