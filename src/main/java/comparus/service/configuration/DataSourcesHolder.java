@@ -1,4 +1,4 @@
-package comparus.service.config;
+package comparus.service.configuration;
 
 import jakarta.annotation.PostConstruct;
 import lombok.AllArgsConstructor;
@@ -11,7 +11,6 @@ import org.springframework.context.annotation.Configuration;
 import java.util.HashMap;
 import java.util.Map;
 
-//@Component
 @Configuration
 @Data
 @NoArgsConstructor
@@ -20,4 +19,9 @@ import java.util.Map;
 public class DataSourcesHolder {
     private Map<String, DataSourceDetails> dataSources = new HashMap<>();
 
+    @PostConstruct
+    public void init() {
+        dataSources.forEach((key, value) -> {value.setName(key);});
+        System.out.println("DataSourcesHolder.init");
+    }
 }

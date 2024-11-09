@@ -1,4 +1,4 @@
-package comparus.service.config;
+package comparus.service.configuration;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

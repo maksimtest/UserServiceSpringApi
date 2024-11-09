@@ -1,18 +1,15 @@
-package comparus.service.config;
+package comparus.service.configuration;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
 
 @Component
+//@RequiredArgsConstructor
+@AllArgsConstructor
 public class CheckDataSource implements ApplicationRunner {
     private DataSourcesHolder dataSourcesHolder;
-
-    @Autowired
-    public CheckDataSource(DataSourcesHolder dataSourcesHolder) {
-        this.dataSourcesHolder = dataSourcesHolder;
-    }
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
