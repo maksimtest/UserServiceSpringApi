@@ -1,7 +1,6 @@
 logging:
     file:
       name: user-service.log
-#      path:
     level:
       root: WARN
       comparus.service: DEBUG
@@ -21,3 +20,14 @@ dataSources:
       username: login
       name: first_name
       surname: last_name
+  db2:
+    strategy: postgres
+    url: "jdbc:postgresql://localhost:5432/comparus2"
+    table: "user_table"
+    user: "testuser"
+    password: "testpass"
+    mapping:
+      id: ldap_login
+      username: ldap_login
+      name: name
+      surname: surname
