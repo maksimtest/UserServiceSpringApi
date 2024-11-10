@@ -1,3 +1,10 @@
+logging:
+    file:
+      name: user-service.log
+#      path:
+    level:
+      root: WARN
+      comparus.service: DEBUG
 spring:
   application:
     name: UserServiceSpringApi
