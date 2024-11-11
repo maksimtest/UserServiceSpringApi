@@ -6,8 +6,8 @@
 
 ## Details of image
  - database: usersdb1
- - user=user1
- - password=root1
+ - user: user1
+ - password: root1
  - table: users1
  - fields: ldap_id, ldap_username, ldap_name, ldap_surname
 
