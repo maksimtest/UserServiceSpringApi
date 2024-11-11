@@ -1,8 +1,7 @@
 # Test task for Java candidate
 
-### How create docker-compose application and start
-+ Download this project to local machine
-+ Use `gradle build` or `gradle build -x test` for compiling project
+### How start this application by docker-compose
++ Use `gradle build` or `gradle build -x test` for compile this project
 + Use `docker-compose build` for building.
 + Use `docker-compose up` for starting application
 
