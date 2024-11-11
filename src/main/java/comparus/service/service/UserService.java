@@ -3,6 +3,9 @@ package comparus.service.service;
 import comparus.service.configuration.DataSourceDetails;
 import comparus.service.configuration.DataSourcesHolder;
 import comparus.service.domain.User;
+import comparus.service.exception.FilterInvalidParametersException;
+import comparus.service.exception.OrderInvalidParametersException;
+import comparus.service.exception.PropagationInvalidParametersException;
 import comparus.service.util.StringUtil;
 import comparus.service.util.UserComparator;
 import comparus.service.exception.InvalidParametersException;
@@ -25,7 +28,7 @@ public class UserService {
     private final ValidateRequestParameters validateRequestParameters;
     private final DataSourcesHolder dataSourcesHolder;
 
-    public List<User> getUsersByFilters(String filter, String propagation, String order) {
+    public List<User> getUsersByFilters(String filter, String propagation, String order) throws InvalidParametersException {
         validateRequestParameters.checkFilterField(filter);
         validateRequestParameters.checkPropagationField(propagation);
         validateRequestParameters.checkOrderField(order);
@@ -55,11 +58,5 @@ public class UserService {
             }
         }
         return allUsers;
-    }
-
-    @ExceptionHandler(InvalidParametersException.class)
-    @ResponseStatus(HttpStatus.BAD_REQUEST)
-    protected String handleCustomException(InvalidParametersException ex) {
-        return ex.getMessage();
     }
 }

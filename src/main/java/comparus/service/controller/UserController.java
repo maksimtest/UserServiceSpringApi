@@ -2,13 +2,16 @@ package comparus.service.controller;
 
 import comparus.service.domain.User;
 //import comparus.service.repository.UserRepository;
+import comparus.service.exception.FilterInvalidParametersException;
+import comparus.service.exception.InvalidParametersException;
+import comparus.service.exception.OrderInvalidParametersException;
+import comparus.service.exception.PropagationInvalidParametersException;
 import comparus.service.service.UserService;
 import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,9 +22,8 @@ import java.util.List;
 public class UserController {
     private final UserService userService;
 
-
     @GetMapping("/users")
-    public List<User> getUsersByFilters(
+    public List<User> getUsersByFilters (
             @RequestParam(value = "order", required = false) String order,
             @RequestParam(value = "filter", required = false) String filter,
             @RequestParam(value = "propagation", required = false) String propagation) {
@@ -29,5 +31,10 @@ public class UserController {
         List<User> users = userService.getUsersByFilters(filter, propagation, order);
 
         return users;
+    }
+    @ExceptionHandler({FilterInvalidParametersException.class, OrderInvalidParametersException.class, PropagationInvalidParametersException.class})
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    protected String handleCustomException(InvalidParametersException ex) {
+        return ex.getMessage();
     }
 }
