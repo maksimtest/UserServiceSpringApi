@@ -11,7 +11,7 @@ spring:
 dataSources:
   db1:
     strategy: postgres
-    url: "jdbc:postgresql://localhost:5432/comparus1"
+    url: "jdbc:postgresql://host.docker.internal:5432/comparus1"
     table: "users"
     user: "postgres"
     password: "root"

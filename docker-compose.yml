@@ -1,0 +1,21 @@
+services:
+#  db1:
+#    image: postgres:16-alpine
+#    container_name: postgres
+#    environment:
+#      POSTGRES_USER: postgres
+#      POSTGRES_PASSWORD: root
+#      POSTGRES_DB: comparus1
+#    ports:
+#      - "5432:5432"
+  java-app:
+    image: openjdk:17
+    container_name: user-service-app
+    volumes:
+      - ./build/libs:/usr/src/app
+    working_dir: /usr/src/app
+    command: ["java", "-jar", "UserServiceSpringApi-0.1.jar"]
+    ports:
+      - "8080:8080"
+    environment:
+      DATABASE_URL_PG1: jdbc:postgresql://host.docker.internal:5432/comparus1
