@@ -1,7 +1,7 @@
 services:
   doc-db1:    # this database located on 'maksim2025/postgres-users-comparus' docker-hub repository.
     image: maksim2025/postgres-users-comparus:2
-    container_name: postgres-db
+    container_name: postgres-db-1
     environment:
       POSTGRES_DB: usersdb1
       POSTGRES_USER: user1
@@ -10,6 +10,15 @@ services:
       - "5433:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
+  doc-db2:    # this database located on 'maksim2025/postgres-users-comparus' docker-hub repository.
+    image: maksim2025/users-mysql:1
+    container_name: mysql-db-1
+    environment:
+      POSTGRES_DB: usersdb1
+      POSTGRES_USER: myuser
+      POSTGRES_PASSWORD: my123pass
+    ports:
+      - "3307:3306"
   java-app:
     image: openjdk:17
     container_name: user-service-app
@@ -21,6 +30,7 @@ services:
       - "8080:8080"
     depends_on:
       - doc-db1
+      - doc-db2
     environment:
       DATABASE_URL_PG1: jdbc:postgresql://host.docker.internal:5432/comparus1 # database on local machine
 volumes:

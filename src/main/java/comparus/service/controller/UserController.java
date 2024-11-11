@@ -24,9 +24,9 @@ public class UserController {
     public List<User> getUsersByFilters(
             @RequestParam(value = "order", required = false) String order,
             @RequestParam(value = "filter", required = false) String filter,
-            @RequestParam(value = "backet", required = false) String backet) {
-        log.info("User.controller.users, order="+order+", filter="+filter+", backet="+backet);
-        List<User> users = userService.getUsersByFilters(filter, backet, order);
+            @RequestParam(value = "propagation", required = false) String propagation) {
+        log.info("User.controller.users, order="+order+", filter="+filter+", propagation="+propagation);
+        List<User> users = userService.getUsersByFilters(filter, propagation, order);
 
         return users;
     }

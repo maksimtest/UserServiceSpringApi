@@ -31,3 +31,14 @@ dataSources:
       username: ldap_username
       name: ldap_name
       surname: ldap_surname
+  db3: # this database located on 'maksim2025/users-mysql:1' docker-hub repository.
+    strategy: mysql
+    url: "jdbc:mysql://doc-db2:3306/userservice"
+    table: "user_table"
+    user: "myuser"
+    password: "my123pass"
+    mapping:
+      id: user_id
+      username: user_username
+      name: user_name
+      surname: user_surname

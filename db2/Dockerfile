@@ -1,0 +1,10 @@
+FROM mysql:5.7.34
+
+ENV MYSQL_ROOT_PASSWORD=12345
+ENV MYSQL_DATABASE=userservice
+ENV MYSQL_USER=myuser
+ENV MYSQL_PASSWORD=my123pass
+ENV MYSQL_INITDB_CHARSET=utf8mb4
+ENV MYSQL_INITDB_COLLATION=utf8mb4_unicode_ci
+
+COPY init.sql /docker-entrypoint-initdb.d/
