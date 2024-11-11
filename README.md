@@ -6,10 +6,10 @@
 + Use `docker-compose up` for starting application
 
 ### Description
-1. OpenApi Specification is contained in comparus-test.yaml file
-2. File application.yml contains different connections to databases
+1. OpenApi Specification is contained in `comparus-test.yaml` file
+2. File `src/main/resources/application.yml` contains different connections to databases
 3. Unavailable connections is ignored
-4. For localhost database connection have to use 'host.docker.internal' like host value 
+4. For localhost database connections have to use `host.docker.internal` like host value 
 
 ### Use these links for testing application
  - http://localhost:8080/users
