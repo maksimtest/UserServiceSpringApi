@@ -10,12 +10,13 @@
 7. Check application by bellow links
 
 ### Description
-1. OpenApi Specification is contained in `comparus-test.yaml` file
-2. File `src/main/resources/application.yml` contains different connections to databases
-3. Unavailable connections is ignored
-4. For localhost database connections have to use `host.docker.internal` like host value 
+1. OpenApi Specification is contained in `comparus-test.yaml` file.
+2. File `src/main/resources/application.yml` contains different connections to databases.
+3. Unavailable connections is ignored.
+4. For localhost database connections have to use `host.docker.internal` like host value. 
 5. This project has been tested with PostgreSQL, MySQl and OracleSQL databases.
 6. Application starts on 8080 port.
+7. Directories db1 and db2 use for creation postgreSQL and MySql images. 
 
 ### Use these links for testing application
  - http://localhost:8080/users
