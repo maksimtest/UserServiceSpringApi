@@ -1,24 +1,26 @@
 # Test task for Java candidate
 
-### How start this application by docker-compose
-+ Use `gradle build` or `gradle build -x test` for compile this project
+### How create docker-compose application and start
++ Download this project to local machine
++ Use `gradle build` or `gradle build -x test` for compiling project
 + Use `docker-compose build` for building.
 + Use `docker-compose up` for start application
 
-### Use one of this command for building jar file
-* gradle build 
-* gradle build -x test
-  (exclude test compiling process)
-
-### Use these commands for docker-compose images
-* docker-compose build
-* docker-compose up
+### Description
+1. OpenApi Specification is contained in comparus-test.yaml file
+3. application.yml file contains different connections to databases
+3. Unavailable connections is ignored
+4. For localhost database connection have to use 'host.docker.internal' like host value 
 
 ### Use these links for testing application
 http://localhost:8080/users
+http://localhost:8080/users?filter=username-us
+http://localhost:8080/users?order=-name
+http://localhost:8080/users?propagation=0-10
+http://localhost:8080/users?
+### These links should return 400 error
+http://localhost:8080/users?filter=username-
+http://localhost:8080/users?order=username-
+http://localhost:8080/users?propagation=-0
 
 
-### Description
-1. application.yml file contains different connections to databases
-2. Unavailable connections is ignored
-3. For localhost database connection have to use 'host.docker.internal' like host value 
