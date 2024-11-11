@@ -9,7 +9,7 @@ spring:
     name: UserServiceSpringApi
 
 dataSources:
-  db1:
+  db1: # this database located on local machine. if this connection is unavailable that app ignores it.
     strategy: postgres
     url: "jdbc:postgresql://host.docker.internal:5432/comparus1"
     table: "users"
@@ -20,14 +20,14 @@ dataSources:
       username: login
       name: first_name
       surname: last_name
-  db2:
+  db2: # this database located on 'maksim2025/postgres-users-comparus' docker-hub repository.
     strategy: postgres
-    url: "jdbc:postgresql://localhost:5432/comparus2"
-    table: "user_table"
-    user: "testuser"
-    password: "testpass"
+    url: "jdbc:postgresql://doc-db1:5432/usersdb1"
+    table: "users1"
+    user: "user1"
+    password: "root1"
     mapping:
-      id: ldap_login
-      username: ldap_login
-      name: name
-      surname: surname
+      id: ldap_id
+      username: ldap_username
+      name: ldap_name
+      surname: ldap_surname

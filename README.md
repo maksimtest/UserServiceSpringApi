@@ -2,7 +2,7 @@
 
 ### How start this application by docker-compose
 1. Download this project to local machine
-2. Actualize `src/main/resources/application.yml` file for database connection 
+2. Actualize `src/main/resources/application.yml` file for database connections 
 3. Actualize `docker-compose.yml` file (actual database information)
 4. Use `gradle build` or `gradle build -x test` for compile this project
 5. Use `docker-compose build` for building.
@@ -30,4 +30,4 @@
 
 ### If you want to add new database to project
 1. Add db information to `src/main/resources/application.yml` file
-2. 
+2. Add db information to `docker-compose.yml` file
