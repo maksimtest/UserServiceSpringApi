@@ -1,4 +1,15 @@
 services:
+  doc-db1:    # this database located on 'maksim2025/postgres-users-comparus' docker-hub repository.
+    image: maksim2025/postgres-users-comparus:2
+    container_name: postgres-db
+    environment:
+      POSTGRES_DB: usersdb1
+      POSTGRES_USER: user1
+      POSTGRES_PASSWORD: root1
+    ports:
+      - "5433:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
   java-app:
     image: openjdk:17
     container_name: user-service-app
@@ -8,5 +19,9 @@ services:
     command: ["java", "-jar", "UserServiceSpringApi-0.1.jar"]
     ports:
       - "8080:8080"
+    depends_on:
+      - doc-db1
     environment:
-      DATABASE_URL_PG1: jdbc:postgresql://host.docker.internal:5432/comparus1
+      DATABASE_URL_PG1: jdbc:postgresql://host.docker.internal:5432/comparus1 # database on local machine
+volumes:
+  postgres_data:
