@@ -5,6 +5,7 @@ import comparus.service.domain.User;
 import comparus.service.service.UserService;
 import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -14,7 +15,7 @@ import java.util.List;
 
 @RestController
 @AllArgsConstructor
-//@RequiredArgsConstructor
+@Slf4j
 public class UserController {
     private final UserService userService;
 
@@ -24,7 +25,7 @@ public class UserController {
             @RequestParam(value = "order", required = false) String order,
             @RequestParam(value = "filter", required = false) String filter,
             @RequestParam(value = "backet", required = false) String backet) {
-
+        log.info("User.controller.users, order="+order+", filter="+filter+", backet="+backet);
         List<User> users = userService.getUsersByFilters(filter, backet, order);
 
         return users;

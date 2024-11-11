@@ -26,9 +26,9 @@ public class DataSourceDetails {
         dataSource.setUrl(url);
         dataSource.setUsername(user);
         dataSource.setPassword(password);
-        switch (strategy) {
+        switch (strategy.toLowerCase()) {
             case "mysql":
-                dataSource.setDriverClassName("com.mysql.jdbc.Driver");
+                dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
                 break;
             case "oracle":
                 dataSource.setDriverClassName("oracle.jdbc.driver.OracleDriver");
