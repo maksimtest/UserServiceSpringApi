@@ -5,7 +5,8 @@ This service aggregates users data from multiple databases.
 Application has declarative configuration for specification of data sources, maximal quality of data source is infinite. 
 
 ### Stack technology
-Spring Boot, Spring jdbc, Tectcontainers, OpenApi specification, Docker, Docker compose,
+Spring Boot, Spring jdbc, Tectcontainers, Mockito, JUnit 
+OpenApi specification, Docker, Docker compose,
 PostgreSql, MySql, Oracle SQl
 
 ### How start this application by docker-compose
